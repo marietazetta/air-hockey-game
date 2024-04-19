@@ -6,4 +6,6 @@
 #game-screen {
     position: relative;
     overflow: hidden;
+    background-image: url(../img/AIR\ HOCKEY\ TABLE.png);
+    height: 100%;
 }
