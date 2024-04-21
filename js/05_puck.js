@@ -4,8 +4,8 @@ class Puck {
         this.gameSize = gameSize;
 
         this.puckSize = {
-            w: 100,
-            h: 100
+            w: 120,
+            h: 120
         };
         this.puckPos = {
             left: (this.gameSize.w / 2) - (this.puckSize.w / 2),
@@ -21,10 +21,11 @@ class Puck {
 
         // this.puckElement.src = 'img.png' 
 
-        this.puckElement.style.backgroundColor = `black` // Color.
+        this.puckElement.style.backgroundColor = `#323232` // Color.
         this.puckElement.style.borderRadius = `50%` // Redondel del Puck.
 
-        this.puckElement.style.position = 'absolute' // De esta forma el puck está por encima del background.
+        this.puckElement.style.position = 'absolute'
+        this.puckElement.style.zIndex = '10' // De esta forma el puck está por encima del background.
 
         this.puckElement.style.width = `${this.puckSize.w}px`
         this.puckElement.style.height = `${this.puckSize.h}px`
