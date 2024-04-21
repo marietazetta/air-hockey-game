@@ -45,22 +45,35 @@ const Game = {
         document.addEventListener('keydown', event => {
             switch (event.code) {
                 case this.keys.UP:
-                    this.mullet.moveUp()
-                    break
+                    this.mullet.moveUp();
+                    break;
                 case this.keys.DOWN:
-                    this.mullet.moveDown()
-                    break
+                    this.mullet.moveDown();
+                    break;
                 case this.keys.LEFT:
-                    this.mullet.moveLeft()
-                    break
+                    this.mullet.moveLeft();
+                    break;
                 case this.keys.RIGHT:
-                    this.mullet.moveRight()
-                    break
+                    this.mullet.moveRight();
+                    break;
+            }
+
+            switch (event.code) {
+                case this.keys2.UP:
+                    this.mullet2.moveUp();
+                    break;
+                case this.keys2.DOWN:
+                    this.mullet2.moveDown();
+                    break;
+                case this.keys2.LEFT:
+                    this.mullet2.moveLeft();
+                    break;
+                case this.keys2.RIGHT:
+                    this.mullet2.moveRight();
+                    break;
             }
         })
     },
-
-    start() { },
 
     setElms() {
         this.puck = new Puck(this.gameScreen, this.gameSize)

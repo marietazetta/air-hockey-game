@@ -1,4 +1,4 @@
-class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
+class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
     constructor(gameScreen, gameSize) {
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
@@ -9,13 +9,13 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
         };
 
         this.mulletPos = {
-            left: (this.gameSize.w / 2) - (this.mulletSize.w / 2) + 800,
+            left: (this.gameSize.w / 2) - (this.mulletSize.w / 2) - 800,
             top: (this.gameSize.h / 2) - (this.mulletSize.h / 2)
         };
 
         this.mulletSpeed = {
-            top: 10,
-            left: 5
+            top: 100,
+            left: 100
         };
 
         this.init();
@@ -24,7 +24,7 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
     init() {
         this.mulletElement = document.createElement('div')
 
-        this.mulletElement.style.backgroundColor = `blue`
+        this.mulletElement.style.backgroundColor = `red`
         this.mulletElement.style.borderRadius = `50%`
 
         this.mulletElement.style.position = 'absolute'
@@ -69,7 +69,7 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
     } // Why ????
 }
 
-class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
+class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
     constructor(gameScreen, gameSize) {
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
@@ -80,8 +80,13 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
         };
 
         this.mullet2Pos = {
-            left: (this.gameSize.w / 2) - (this.mullet2Size.w / 2) - 800,
+            left: (this.gameSize.w / 2) - (this.mullet2Size.w / 2) + 800,
             top: (this.gameSize.h / 2) - (this.mullet2Size.h / 2)
+        };
+
+        this.mullet2Speed = {
+            top: 100,
+            left: 100
         };
 
         this.init();
@@ -90,7 +95,7 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
     init() {
         this.mullet2Element = document.createElement('div')
 
-        this.mullet2Element.style.backgroundColor = `red`
+        this.mullet2Element.style.backgroundColor = `blue`
         this.mullet2Element.style.borderRadius = `50%`
 
         this.mullet2Element.style.position = 'absolute'
@@ -103,4 +108,34 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
 
         this.gameScreen.appendChild(this.mullet2Element)
     }
+
+    move() {
+        this.updatePos()
+    }
+
+    moveUp() {
+        this.mullet2Pos.top -= this.mullet2Speed.top
+        this.updatePos()
+    }
+
+    moveDown() {
+        this.mullet2Pos.top += this.mullet2Speed.top
+        this.updatePos()
+    }
+
+    moveLeft() {
+        this.mullet2Pos.left -= this.mullet2Speed.left
+        this.updatePos()
+    }
+
+    moveRight() {
+        this.mullet2Pos.left += this.mullet2Speed.left
+        this.updatePos()
+
+    }
+
+    updatePos() {
+        this.mullet2Element.style.top = `${this.mullet2Pos.top}px`;
+        this.mullet2Element.style.left = `${this.mullet2Pos.left}px`;
+    } // Why ????
 }
