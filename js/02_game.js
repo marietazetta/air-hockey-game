@@ -32,7 +32,6 @@ const Game = {
     init() {
         this.setGameDimentions()
         this.setEventListeners()
-        this.setElms()
         this.start()
 
     },
@@ -45,6 +44,7 @@ const Game = {
 
     start() {
         this.startGameLoop()
+        this.setElms()
     },
 
     startGameLoop() {

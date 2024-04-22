@@ -45,52 +45,21 @@ class Puck {
     }
 
     move() {
-        // TEST 1
-        // this.puckPos.top += this.puckSpeed.top
-        // this.puckPos.left += this.puckSpeed.left
+        this.puckPos.top += this.puckSpeed.top;
+        this.puckPos.left += this.puckSpeed.left;
 
-        // EJEMPLO VÍDEO PELOTITA
-        this.puckPos.left += this.puckPhysics.speed.left
-        this.puckPos.top += this.puckPhysics.speed.top
+        if (this.puckPos.left < 0 || this.puckPos.left + this.puckSize.w > this.gameSize.w) {
 
-        // Gravity !!!!
-        this.puckPhysics.speed.top += this.puckPhysics.gravity
-        this.puckPhysics.speed.left += this.puckPhysics.gravity // A dos lados ?
+            this.puckSpeed.left *= -1
+        }
 
-        // Faltan colisiones
-
-
-        // Para que no se salga de la pantalla, nuestro checkBordersCollision()
+        if (this.puckPos.top < 0 || this.puckPos.top + this.puckSize.h > this.gameSize.h) {
+            this.puckSpeed.top *= -1
+        }
         this.puckPos.top = Math.max(0, Math.min(this.gameSize.h - this.puckSize.h, this.puckPos.top))
         this.puckPos.left = Math.max(0, Math.min(this.gameSize.w - this.puckSize.w, this.puckPos.left))
 
         this.updatePos()
+
     }
-
-    // CUIDAO 🔥 Lógicas de los mullet
-    // moveUp() {
-    //     this.puckPos.top = Math.max(0, this.puckPos.top - this.puckSpeed.top)
-    //     this.updatePos()
-    // }
-
-    // moveDown() {
-    //     this.puckPos.top = Math.min(this.gameSize.h - this.puckSize.h, this.puckPos.top + this.puckSpeed.top)
-    //     this.updatePos()
-    // }
-
-    // moveLeft() {
-    //     this.puckPos.left = Math.max(0, this.puckPos.left - this.puckSpeed.left)
-    //     this.updatePos()
-    // }
-
-    // moveRight() {
-    //     this.puckPos.left = Math.min(this.gameSize.w - this.puckSize.w, this.puckPos.left + this.puckSpeed.left)
-    //     this.updatePos()
-
-    // }
-
-    // updatePos() {
-    //     this.puckElement.style.top = `${this.puckPos.top}px`;
-    //     this.puckElement.style.left = `${this.puckPos.left}px`;
-    // }
 }
