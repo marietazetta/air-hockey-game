@@ -21,7 +21,7 @@ const Game = {
         RIGHT: 'ArrowRight'
     },
 
-    framesCounter: 0, // FPS
+    framesCounter: 30, // FPS
 
     background: undefined,
     goal_box: undefined,
@@ -33,12 +33,24 @@ const Game = {
         this.setGameDimentions()
         this.setEventListeners()
         this.setElms()
+        this.start()
 
     },
 
     setGameDimentions() {
         this.gameScreen.style.height = `${this.gameSize.h}px`
         this.gameScreen.style.width = `${this.gameSize.w}px`
+    },
+
+
+    start() {
+        this.startGameLoop()
+    },
+
+    startGameLoop() {
+        setInterval(() => {
+            this.mullet.moveAll()
+        }, 30)
     },
 
     setEventListeners() {
@@ -81,4 +93,10 @@ const Game = {
         this.mullet2 = new Mullet2(this.gameScreen, this.gameSize)
         this.background = new Background(this.gameScreen, this.gameSize)
     },
+
+
+    moveAll() {
+        this.mullet.move()
+    },
+
 }
