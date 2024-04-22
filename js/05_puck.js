@@ -49,7 +49,6 @@ class Puck {
         this.puckPos.left += this.puckSpeed.left;
 
         if (this.puckPos.left < 0 || this.puckPos.left + this.puckSize.w > this.gameSize.w) {
-
             this.puckSpeed.left *= -1
         }
 
