@@ -12,7 +12,15 @@ class Puck {
             top: (this.gameSize.h / 2) - (this.puckSize.h / 2)
         };
 
-        this.init();
+        this.puckPhysics = { // Cambios
+            speed: {
+                top: 400,
+                left: 400
+            },
+            gravity: .9
+        };
+
+        this.init()
     }
 
 
@@ -35,4 +43,54 @@ class Puck {
 
         this.gameScreen.appendChild(this.puckElement)
     }
+
+    move() {
+        // TEST 1
+        // this.puckPos.top += this.puckSpeed.top
+        // this.puckPos.left += this.puckSpeed.left
+
+        // EJEMPLO VÍDEO PELOTITA
+        this.puckPos.left += this.puckPhysics.speed.left
+        this.puckPos.top += this.puckPhysics.speed.top
+
+        // Gravity !!!!
+        this.puckPhysics.speed.top += this.puckPhysics.gravity
+        this.puckPhysics.speed.left += this.puckPhysics.gravity // A dos lados ?
+
+        // Faltan colisiones
+
+
+        // Para que no se salga de la pantalla, nuestro checkBordersCollision()
+        this.puckPos.top = Math.max(0, Math.min(this.gameSize.h - this.puckSize.h, this.puckPos.top))
+        this.puckPos.left = Math.max(0, Math.min(this.gameSize.w - this.puckSize.w, this.puckPos.left))
+
+        this.updatePos()
+    }
+
+    // CUIDAO 🔥 Lógicas de los mullet
+    // moveUp() {
+    //     this.puckPos.top = Math.max(0, this.puckPos.top - this.puckSpeed.top)
+    //     this.updatePos()
+    // }
+
+    // moveDown() {
+    //     this.puckPos.top = Math.min(this.gameSize.h - this.puckSize.h, this.puckPos.top + this.puckSpeed.top)
+    //     this.updatePos()
+    // }
+
+    // moveLeft() {
+    //     this.puckPos.left = Math.max(0, this.puckPos.left - this.puckSpeed.left)
+    //     this.updatePos()
+    // }
+
+    // moveRight() {
+    //     this.puckPos.left = Math.min(this.gameSize.w - this.puckSize.w, this.puckPos.left + this.puckSpeed.left)
+    //     this.updatePos()
+
+    // }
+
+    // updatePos() {
+    //     this.puckElement.style.top = `${this.puckPos.top}px`;
+    //     this.puckElement.style.left = `${this.puckPos.left}px`;
+    // }
 }

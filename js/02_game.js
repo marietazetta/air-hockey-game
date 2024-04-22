@@ -49,7 +49,7 @@ const Game = {
 
     startGameLoop() {
         setInterval(() => {
-            this.mullet.moveAll()
+            // this.mullet.moveAll()
         }, 30)
     },
 
@@ -88,15 +88,17 @@ const Game = {
     },
 
     setElms() {
+        this.background = new Background(this.gameScreen, this.gameSize)
         this.puck = new Puck(this.gameScreen, this.gameSize)
         this.mullet = new Mullet(this.gameScreen, this.gameSize)
         this.mullet2 = new Mullet2(this.gameScreen, this.gameSize)
-        this.background = new Background(this.gameScreen, this.gameSize)
+        this.rightGoalBox = new RightGoalbox(this.gameScreen, this.gameSize)
+        this.leftGoalBox = new LeftGoalBox(this.gameScreen, this.gameSize)
     },
 
 
-    moveAll() {
-        this.mullet.move()
-    },
+    // moveAll() {
+    //     this.mullet.move()
+    // },
 
 }
