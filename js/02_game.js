@@ -21,13 +21,15 @@ const Game = {
         RIGHT: 'ArrowRight'
     },
 
-    framesCounter: 30, // FPS
+    framesCounter: 60, // FPS
 
     background: undefined,
     goal_box: undefined,
     puck: undefined,
     mullet: undefined,
     mullet2: undefined,
+    goalBox1: undefined,
+    goalBox2: undefined,
 
     init() {
         this.setGameDimentions()
@@ -43,15 +45,27 @@ const Game = {
 
 
     start() {
-        this.startGameLoop()
         this.setElms()
+        this.startGameLoop()
     },
 
     startGameLoop() {
-        setInterval(() => {
-            // this.mullet.moveAll()
-        }, 30)
+        this.intervalId = setInterval(() => {
+            this.updateGameObjects()
+            this.checkCollisions()
+        }, 1000 / this.framesCounter)
     },
+
+    updateGameObjects() {
+        this.puck.move()
+    },
+
+    checkCollisions() {
+        this.puck.checkCollisionWithMullet(this.mullet)
+        this.puck.checkCollisionWithMullet2(this.mullet2)
+    },
+
+
 
     setEventListeners() {
         document.addEventListener('keydown', event => {
@@ -95,10 +109,4 @@ const Game = {
         this.rightGoalBox = new RightGoalbox(this.gameScreen, this.gameSize)
         this.leftGoalBox = new LeftGoalBox(this.gameScreen, this.gameSize)
     },
-
-
-    // moveAll() {
-    //     this.mullet.move()
-    // },
-
 }

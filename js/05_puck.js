@@ -12,10 +12,12 @@ class Puck {
             top: (this.gameSize.h / 2) - (this.puckSize.h / 2)
         };
 
+        this.setInitialPos()
+
         this.puckPhysics = { // Cambios
             speed: {
-                top: 400,
-                left: 400
+                top: 10,
+                left: 10
             },
             gravity: .9
         };
@@ -23,6 +25,12 @@ class Puck {
         this.init()
     }
 
+    setInitialPos() {
+        this.puckPos = {
+            left: (this.gameSize.w / 2) - (this.puckSize.w / 2),
+            top: (this.gameSize.h / 2) - (this.puckSize.h / 2)
+        }
+    }
 
     init() { // DOM, estilos y propiedades.
         this.puckElement = document.createElement('div') // Creamos en el DOM.
@@ -44,21 +52,70 @@ class Puck {
         this.gameScreen.appendChild(this.puckElement)
     }
 
+    reset() {
+        this.setInitialPos()
+        this.updatePos()
+    }
+
     move() {
-        this.puckPos.top += this.puckSpeed.top;
-        this.puckPos.left += this.puckSpeed.left;
 
-        if (this.puckPos.left < 0 || this.puckPos.left + this.puckSize.w > this.gameSize.w) {
-            this.puckSpeed.left *= -1
-        }
+        this.puckPos.top += this.puckPhysics.speed.top
+        this.puckPos.left += this.puckPhysics.speed.left
 
-        if (this.puckPos.top < 0 || this.puckPos.top + this.puckSize.h > this.gameSize.h) {
-            this.puckSpeed.top *= -1
-        }
-        this.puckPos.top = Math.max(0, Math.min(this.gameSize.h - this.puckSize.h, this.puckPos.top))
-        this.puckPos.left = Math.max(0, Math.min(this.gameSize.w - this.puckSize.w, this.puckPos.left))
-
+        this.checkBordersCollision()
         this.updatePos()
 
+    }
+
+    checkBordersCollision() {
+        if (this.puckPos.left >= this.gameSize.w - this.puckSize.w) {
+            this.turnLeft()
+        }
+
+        if (this.puckPos.top >= this.gameSize.h - this.puckSize.h) {
+            this.turnTop()
+        }
+
+        if (this.puckPos.left <= 0) {
+            this.turnLeft()
+        }
+
+        if (this.puckPos.top <= 0) {
+            this.turnTop()
+        }
+    }
+
+    turnLeft() {
+        this.puckPhysics.speed.left *= -1
+    }
+    turnTop() {
+        this.puckPhysics.speed.top *= -1
+    }
+
+    checkCollisionWithMullet(mullet) {
+        if (this.puckPos.left < mullet.mulletPos.left + mullet.mulletSize.w &&
+            this.puckPos.left + this.puckSize.w > mullet.mulletPos.left &&
+            this.puckPos.top < mullet.mulletPos.top + mullet.mulletSize.h &&
+            this.puckPos.top + this.puckSize.h > mullet.mulletPos.top) {
+            //
+            this.turnLeft()
+            this.turnTop()
+        }
+    }
+
+    checkCollisionWithMullet2(mullet2) {
+        if (this.puckPos.left < mullet2.mullet2Pos.left + mullet2.mullet2Size.w &&
+            this.puckPos.left + this.puckSize.w > mullet2.mullet2Pos.left &&
+            this.puckPos.top < mullet2.mullet2Pos.top + mullet2.mullet2Size.h &&
+            this.puckPos.top + this.puckSize.h > mullet2.mullet2Pos.top) {
+            //
+            this.turnLeft()
+            this.turnTop()
+        }
+    }
+
+    updatePos() {
+        this.puckElement.style.top = `${this.puckPos.top}px`
+        this.puckElement.style.left = `${this.puckPos.left}px`
     }
 }
