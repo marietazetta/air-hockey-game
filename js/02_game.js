@@ -30,6 +30,8 @@ const Game = {
     mullet2: undefined,
     goalBox1: undefined,
     goalBox2: undefined,
+    score: undefined,
+    score2: undefined,
 
     init() {
         this.setGameDimentions()
@@ -56,6 +58,8 @@ const Game = {
         this.mullet2 = new Mullet2(this.gameScreen, this.gameSize)
         this.rightGoalBox = new RightGoalbox(this.gameScreen, this.gameSize)
         this.leftGoalBox = new LeftGoalBox(this.gameScreen, this.gameSize)
+        this.score = new Score(this.gameScreen, this.gameSize)
+        this.score2 = new Score2(this.gameScreen, this.gameSize)
     },
 
     startGameLoop() {

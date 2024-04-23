@@ -127,7 +127,8 @@ class Puck {
         if (this.puckPos.left + this.puckSize.w > rightGoalBox.rightGoalBoxPos.left) {
             this.reset()
             this.hasStarted = false
-
+            let currentScore = parseInt(Game.score.scoreElement.innerText.split(' ')[1])
+            Game.score.scoreElement.innerText = `Score: ${currentScore + 1}`
         }
     }
 
@@ -135,7 +136,8 @@ class Puck {
         if (this.puckPos.left < leftGoalBox.leftGoalBoxPos.left + leftGoalBox.leftGoalBoxSize.w) {
             this.reset()
             this.hasStarted = false
-
+            let currentScore2 = parseInt(Game.score2.score2Element.innerText.split(' ')[1])
+            Game.score2.score2Element.innerText = `Score: ${currentScore2 + 1}`
         }
     }
 

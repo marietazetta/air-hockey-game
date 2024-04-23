@@ -41,11 +41,6 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
 
     move() {
         this.updatePos()
-
-
-        if (this.mulletPos.left >= this.gameScreen.w - this.mulletSize.w) {
-            alert("HE LLEGAO")
-        }
     }
 
 
@@ -71,15 +66,15 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
     }
 
     updatePos() {
-        this.mulletElement.style.top = `${this.mulletPos.top}px`;
-        this.mulletElement.style.left = `${this.mulletPos.left}px`;
+        this.mulletElement.style.top = `${this.mulletPos.top}px`
+        this.mulletElement.style.left = `${this.mulletPos.left}px`
     }
 }
 
 class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
     constructor(gameScreen, gameSize) {
-        this.gameScreen = gameScreen;
-        this.gameSize = gameSize;
+        this.gameScreen = gameScreen
+        this.gameSize = gameSize
 
         this.mullet2Size = {
             w: 180,
@@ -145,7 +140,7 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
     }
 
     updatePos() {
-        this.mullet2Element.style.top = `${this.mullet2Pos.top}px`;
-        this.mullet2Element.style.left = `${this.mullet2Pos.left}px`;
+        this.mullet2Element.style.top = `${this.mullet2Pos.top}px`
+        this.mullet2Element.style.left = `${this.mullet2Pos.left}px`
     }
 }
