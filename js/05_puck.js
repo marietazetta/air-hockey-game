@@ -3,9 +3,11 @@ class Puck {
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
 
+        this.hasStarted = false
+
         this.puckSize = {
-            w: 120,
-            h: 120
+            w: 100,
+            h: 100
         };
         this.puckPos = {
             left: (this.gameSize.w / 2) - (this.puckSize.w / 2),
@@ -16,8 +18,8 @@ class Puck {
 
         this.puckPhysics = { // Cambios
             speed: {
-                top: 10,
-                left: 10
+                top: 15,
+                left: 15
             },
             gravity: .9
         };
@@ -57,13 +59,18 @@ class Puck {
         this.updatePos()
     }
 
+
+
     move() {
 
-        this.puckPos.top += this.puckPhysics.speed.top
-        this.puckPos.left += this.puckPhysics.speed.left
+        if (this.hasStarted) {
 
-        this.checkBordersCollision()
-        this.updatePos()
+            this.puckPos.top += this.puckPhysics.speed.top
+            this.puckPos.left += this.puckPhysics.speed.left
+
+            this.checkBordersCollision()
+            this.updatePos()
+        }
 
     }
 
@@ -100,6 +107,7 @@ class Puck {
             //
             this.turnLeft()
             this.turnTop()
+            this.hasStarted = true
         }
     }
 
@@ -111,6 +119,23 @@ class Puck {
             //
             this.turnLeft()
             this.turnTop()
+            this.hasStarted = true
+        }
+    }
+
+    checkCollisionWithRightGoalBox(rightGoalBox) {
+        if (this.puckPos.left + this.puckSize.w > rightGoalBox.rightGoalBoxPos.left) {
+            this.reset()
+            this.hasStarted = false
+
+        }
+    }
+
+    checkCollisionWithLeftGoalBox(leftGoalBox) {
+        if (this.puckPos.left < leftGoalBox.leftGoalBoxPos.left + leftGoalBox.leftGoalBoxSize.w) {
+            this.reset()
+            this.hasStarted = false
+
         }
     }
 

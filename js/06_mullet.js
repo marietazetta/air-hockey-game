@@ -4,8 +4,8 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
         this.gameSize = gameSize;
 
         this.mulletSize = {
-            w: 220,
-            h: 220
+            w: 180,
+            h: 180
         };
 
         this.mulletPos = {
@@ -14,8 +14,8 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
         };
 
         this.mulletSpeed = {
-            top: 100,
-            left: 100
+            top: 89.50,
+            left: 89.50
         };
 
         this.init();
@@ -82,8 +82,8 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
         this.gameSize = gameSize;
 
         this.mullet2Size = {
-            w: 220,
-            h: 220
+            w: 180,
+            h: 180
         };
 
         this.mullet2Pos = {
@@ -92,8 +92,8 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
         };
 
         this.mullet2Speed = {
-            top: 100,
-            left: 100
+            top: 89.50,
+            left: 89.50
         };
 
         this.init();

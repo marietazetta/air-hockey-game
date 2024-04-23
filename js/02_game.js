@@ -11,7 +11,8 @@ const Game = {
         UP: 'KeyW',
         DOWN: 'KeyS',
         LEFT: 'KeyA',
-        RIGHT: 'KeyD'
+        RIGHT: 'KeyD',
+        SPACE: 'Space'
     },
 
     keys2: {
@@ -24,7 +25,6 @@ const Game = {
     framesCounter: 60, // FPS
 
     background: undefined,
-    goal_box: undefined,
     puck: undefined,
     mullet: undefined,
     mullet2: undefined,
@@ -45,27 +45,36 @@ const Game = {
 
 
     start() {
-        this.setElms()
         this.startGameLoop()
+        this.setElms()
+    },
+
+    setElms() {
+        this.background = new Background(this.gameScreen, this.gameSize)
+        this.puck = new Puck(this.gameScreen, this.gameSize)
+        this.mullet = new Mullet(this.gameScreen, this.gameSize)
+        this.mullet2 = new Mullet2(this.gameScreen, this.gameSize)
+        this.rightGoalBox = new RightGoalbox(this.gameScreen, this.gameSize)
+        this.leftGoalBox = new LeftGoalBox(this.gameScreen, this.gameSize)
     },
 
     startGameLoop() {
         this.intervalId = setInterval(() => {
-            this.updateGameObjects()
+            this.moveAll()
             this.checkCollisions()
         }, 1000 / this.framesCounter)
     },
 
-    updateGameObjects() {
+    moveAll() {
         this.puck.move()
     },
 
     checkCollisions() {
         this.puck.checkCollisionWithMullet(this.mullet)
         this.puck.checkCollisionWithMullet2(this.mullet2)
+        this.puck.checkCollisionWithRightGoalBox(this.rightGoalBox)
+        this.puck.checkCollisionWithLeftGoalBox(this.leftGoalBox)
     },
-
-
 
     setEventListeners() {
         document.addEventListener('keydown', event => {
@@ -82,9 +91,6 @@ const Game = {
                 case this.keys.RIGHT:
                     this.mullet.moveRight();
                     break;
-            }
-
-            switch (event.code) {
                 case this.keys2.UP:
                     this.mullet2.moveUp();
                     break;
@@ -101,12 +107,4 @@ const Game = {
         })
     },
 
-    setElms() {
-        this.background = new Background(this.gameScreen, this.gameSize)
-        this.puck = new Puck(this.gameScreen, this.gameSize)
-        this.mullet = new Mullet(this.gameScreen, this.gameSize)
-        this.mullet2 = new Mullet2(this.gameScreen, this.gameSize)
-        this.rightGoalBox = new RightGoalbox(this.gameScreen, this.gameSize)
-        this.leftGoalBox = new LeftGoalBox(this.gameScreen, this.gameSize)
-    },
 }
