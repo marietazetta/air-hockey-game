@@ -27,7 +27,7 @@ class Score {
 
         this.scoreElement.style.top = `${this.scorePos.top}px`
         this.scoreElement.style.left = `${this.scorePos.left}px`
-        this.scoreElement.innerText = 'Score: 0'
+        this.scoreElement.innerText = '0'
         this.scoreElement.style.fontFamily = 'arial'
         this.scoreElement.style.fontSize = '35px'
 
@@ -64,7 +64,7 @@ class Score2 {
 
         this.score2Element.style.top = `${this.score2Pos.top}px`
         this.score2Element.style.left = `${this.score2Pos.left}px`
-        this.score2Element.innerText = 'Score: 0'
+        this.score2Element.innerText = '0'
         this.score2Element.style.fontFamily = 'arial'
         this.score2Element.style.fontSize = '35px'
 

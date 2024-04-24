@@ -15,10 +15,8 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
 
         this.mulletSpeed = {
 
-            top: 30,
-            left: 35
-            // top: 89.50,
-            // left: 89.50
+            top: 89.50,
+            left: 89.50
         };
 
         this.init();
