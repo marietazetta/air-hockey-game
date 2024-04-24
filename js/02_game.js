@@ -24,6 +24,7 @@ const Game = {
 
     framesCounter: 60, // FPS
 
+
     background: undefined,
     puck: undefined,
     mullet: undefined,
@@ -67,6 +68,7 @@ const Game = {
             this.moveAll()
             this.checkCollisions()
         }, 1000 / this.framesCounter)
+
     },
 
     moveAll() {
@@ -110,5 +112,7 @@ const Game = {
             }
         })
     },
+
+
 
 }

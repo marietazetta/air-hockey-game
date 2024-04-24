@@ -9,8 +9,8 @@ class Score {
         };
 
         this.scorePos = {
-            left: this.gameSize.w * 0.1,
-            top: (this.scoreSize.h / 2) * 0.2
+            left: this.gameSize.w * 0.4,
+            top: (this.scoreSize.h / 2) * 0.6
         };
 
         this.init()
@@ -28,6 +28,7 @@ class Score {
         this.scoreElement.style.top = `${this.scorePos.top}px`
         this.scoreElement.style.left = `${this.scorePos.left}px`
         this.scoreElement.innerText = '0'
+        this.scoreElement.style.color = 'white'
         this.scoreElement.style.fontFamily = 'arial'
         this.scoreElement.style.fontSize = '35px'
 
@@ -46,8 +47,8 @@ class Score2 {
         };
 
         this.score2Pos = {
-            left: this.gameSize.w * 0.8,
-            top: (this.score2Size.h / 2) * 0.2
+            left: this.gameSize.w * 0.59,
+            top: (this.score2Size.h / 2) * 0.6
         };
 
         this.init()
@@ -65,6 +66,7 @@ class Score2 {
         this.score2Element.style.top = `${this.score2Pos.top}px`
         this.score2Element.style.left = `${this.score2Pos.left}px`
         this.score2Element.innerText = '0'
+        this.score2Element.style.color = 'white'
         this.score2Element.style.fontFamily = 'arial'
         this.score2Element.style.fontSize = '35px'
 

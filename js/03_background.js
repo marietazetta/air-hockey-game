@@ -15,8 +15,10 @@ class Background {
 
         backgroundElement.style.backgroundImage = "url('./img/AIR HOCKEY TABLE.png')"
 
-        backgroundElement.style.backgroundSize = "cover"
-        backgroundElement.style.backgroundPosition = "center"
+        backgroundElement.style.backgroundSize = "100% 100%"
+        backgroundElement.style.backgroundRepeat = "no-repeat"
+        backgroundElement.style.backgroundPosition = "center center"
+
 
         this.gameScreen.appendChild(backgroundElement)
     }

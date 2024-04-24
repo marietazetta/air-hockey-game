@@ -39,8 +39,9 @@ class Puck {
 
         // this.puckElement.src = 'img.png' 
 
-        this.puckElement.style.backgroundColor = `#323232` // Color.
-        this.puckElement.style.borderRadius = `50%` // Redondel del Puck.
+        this.puckElement.style.backgroundImage = "url('img/puck.png')"
+        this.puckElement.style.backgroundSize = "contain"
+        this.puckElement.style.backgroundRepeat = "no-repeat"
 
         this.puckElement.style.position = 'absolute'
         this.puckElement.style.zIndex = '10' // De esta forma el puck está por encima del background.
@@ -123,12 +124,19 @@ class Puck {
         }
     }
 
+    // gameOver() {
+    //     alert('END OF GAME !')
+    // }
+
     checkCollisionWithRightGoalBox(rightGoalBox) {
         if (this.puckPos.left + this.puckSize.w > rightGoalBox.rightGoalBoxPos.left) {
             this.reset()
             this.hasStarted = false
             let currentScore = Number(Game.score.scoreElement.innerText) + 1
             Game.score.scoreElement.innerText = currentScore
+        }
+        else if (this.currentScore === 5) {
+            alert("End of game")
         }
     }
 
@@ -139,10 +147,15 @@ class Puck {
             let currentScore2 = Number(Game.score2.score2Element.innerText) + 1
             Game.score2.score2Element.innerText = currentScore2
         }
+        else if (this.currentScore === 5) {
+            alert("End of game")
+        }
     }
 
     updatePos() {
         this.puckElement.style.top = `${this.puckPos.top}px`
         this.puckElement.style.left = `${this.puckPos.left}px`
     }
+
+
 }

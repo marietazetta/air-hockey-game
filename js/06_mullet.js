@@ -14,7 +14,6 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
         };
 
         this.mulletSpeed = {
-
             top: 89.50,
             left: 89.50
         };
@@ -25,8 +24,9 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
     init() {
         this.mulletElement = document.createElement('div')
 
-        this.mulletElement.style.backgroundColor = `#FF4444`
-        this.mulletElement.style.borderRadius = `50%`
+        this.mulletElement.style.backgroundImage = "url('img/mulletred.png')"
+        this.mulletElement.style.backgroundSize = "contain"
+        this.mulletElement.style.backgroundRepeat = "no-repeat"
 
         this.mulletElement.style.position = 'absolute'
         this.mulletElement.style.zIndex = '10'
@@ -98,9 +98,9 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
     init() {
         this.mullet2Element = document.createElement('div')
 
-        this.mullet2Element.style.backgroundColor = `#4486FF`
-        this.mullet2Element.style.borderRadius = `50%`
-
+        this.mullet2Element.style.backgroundImage = "url('img/mulletblue.png')"
+        this.mullet2Element.style.backgroundSize = "contain"
+        this.mullet2Element.style.backgroundRepeat = "no-repeat"
         this.mullet2Element.style.position = 'absolute'
         this.mullet2Element.style.zIndex = '10'
 

@@ -23,7 +23,7 @@ class LeftGoalBox {
         this.leftGoalBoxElement = document.createElement('div') // Creamos en el DOM.
 
 
-        this.leftGoalBoxElement.style.backgroundColor = `#5B9257` // Color.
+        this.leftGoalBoxElement.style.backgroundColor = `#BA0000` // Color.
 
         this.leftGoalBoxElement.style.position = 'absolute'
         this.leftGoalBoxElement.style.zIndex = '11' // De esta forma el puck está por encima del background.
@@ -52,7 +52,7 @@ class RightGoalbox {
         }
 
         this.rightGoalBoxPos = {
-            left: this.gameSize.w * 0.99,
+            left: this.gameSize.w * 0.988,
             top: (this.gameSize.h / 2) - (this.rightGoalBoxSize.h / 2)
         }
 
@@ -64,7 +64,7 @@ class RightGoalbox {
         this.rightGoalBoxElement = document.createElement('div') // Creamos en el DOM.
 
 
-        this.rightGoalBoxElement.style.backgroundColor = `#5B9257` // Color.
+        this.rightGoalBoxElement.style.backgroundColor = `#0060BA` // Color.
 
         this.rightGoalBoxElement.style.position = 'absolute'
         this.rightGoalBoxElement.style.zIndex = '11' // De esta forma el puck está por encima del background.
