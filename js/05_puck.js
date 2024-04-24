@@ -58,6 +58,7 @@ class Puck {
     reset() {
         this.setInitialPos()
         this.updatePos()
+        this.gameOver()
     }
 
 
@@ -124,33 +125,27 @@ class Puck {
         }
     }
 
-    // gameOver() {
-    //     alert('END OF GAME !')
-    // }
-
     checkCollisionWithRightGoalBox(rightGoalBox) {
         if (this.puckPos.left + this.puckSize.w > rightGoalBox.rightGoalBoxPos.left) {
             this.reset()
             this.hasStarted = false
             let currentScore = Number(Game.score.scoreElement.innerText) + 1
+            currentScore === 5 && alert('Red Player Wins!!!') && Game.init()
             Game.score.scoreElement.innerText = currentScore
         }
-        else if (this.currentScore === 5) {
-            alert("End of game")
-        }
     }
-
     checkCollisionWithLeftGoalBox(leftGoalBox) {
         if (this.puckPos.left < leftGoalBox.leftGoalBoxPos.left + leftGoalBox.leftGoalBoxSize.w) {
             this.reset()
             this.hasStarted = false
             let currentScore2 = Number(Game.score2.score2Element.innerText) + 1
+            currentScore2 === 5 && alert('Blue Player Wins!!!') && Game.init()
             Game.score2.score2Element.innerText = currentScore2
         }
-        else if (this.currentScore === 5) {
-            alert("End of game")
-        }
     }
+
+
+
 
     updatePos() {
         this.puckElement.style.top = `${this.puckPos.top}px`
