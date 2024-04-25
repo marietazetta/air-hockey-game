@@ -1,4 +1,4 @@
-class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
+class Mullet { // 🔴
     constructor(gameScreen, gameSize) {
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
@@ -9,8 +9,8 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
         };
 
         this.mulletPos = {
-            left: this.gameSize.w * 0.15, // 15% del ancho hacia la derecha desde el borde izquierdo
-            top: (this.gameSize.h / 2) - (this.mulletSize.h / 2) // Centrado verticalmente
+            left: this.gameSize.w * 0.15,
+            top: (this.gameSize.h / 2) - (this.mulletSize.h / 2)
         };
 
         this.mulletSpeed = {
@@ -70,7 +70,7 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
 
     }
 
-    checkwCollisionMullet() {
+    checkCollisionMullet() {
         if (this.mulletPos.left >= this.gameSize.w - this.mulletSize.w) {
             this.mulletTurnLeft()
         }
@@ -96,35 +96,13 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
     }
 
 
-
-    // moveUp() {
-    //     this.mulletPos.top = Math.max(0, this.mulletPos.top - this.mulletSpeed.top)
-    //     this.updatePos()
-    // }
-
-    // moveDown() {
-    //     this.mulletPos.top = Math.min(this.gameSize.h - this.mulletSize.h, this.mulletPos.top + this.mulletSpeed.top)
-    //     this.updatePos()
-    // }
-
-    // moveLeft() {
-    //     this.mulletPos.left = Math.max(0, this.mulletPos.left - this.mulletSpeed.left)
-    //     this.updatePos()
-    // }
-
-    // moveRight() {
-    //     this.mulletPos.left = Math.min(this.gameSize.w - this.mulletSize.w, this.mulletPos.left + this.mulletSpeed.left)
-    //     this.updatePos()
-
-    // }
-
     updatePos() {
         this.mulletElement.style.top = `${this.mulletPos.top}px`
         this.mulletElement.style.left = `${this.mulletPos.left}px`
     }
 }
 
-class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
+class Mullet2 { // 🔵
     constructor(gameScreen, gameSize) {
         this.gameScreen = gameScreen
         this.gameSize = gameSize
@@ -135,8 +113,8 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
         };
 
         this.mullet2Pos = {
-            left: this.gameSize.w * 0.85 - this.mullet2Size.w, // 85% del ancho, menos el ancho de Mullet2
-            top: (this.gameSize.h / 2) - (this.mullet2Size.h / 2) // Centrado verticalmente
+            left: this.gameSize.w * 0.85 - this.mullet2Size.w,
+            top: (this.gameSize.h / 2) - (this.mullet2Size.h / 2)
         };
 
         this.mullet2Speed = {
@@ -192,28 +170,6 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
         this.updatePos()
     }
 
-
-
-    // moveUp() {
-    //     this.mullet2Pos.top = Math.max(0, this.mullet2Pos.top - this.mullet2Speed.top)
-    //     this.updatePos()
-    // }
-
-    // moveDown() {
-    //     this.mullet2Pos.top = Math.min(this.gameSize.h - this.mullet2Size.h, this.mullet2Pos.top + this.mullet2Speed.top)
-    //     this.updatePos()
-    // }
-
-    // moveLeft() {
-    //     this.mullet2Pos.left = Math.max(0, this.mullet2Pos.left - this.mullet2Speed.left)
-    //     this.updatePos()
-    // }
-
-    // moveRight() {
-    //     this.mullet2Pos.left = Math.min(this.gameSize.w - this.mullet2Size.w, this.mullet2Pos.left + this.mullet2Speed.left)
-    //     this.updatePos()
-
-    // }
 
     updatePos() {
         this.mullet2Element.style.top = `${this.mullet2Pos.top}px`

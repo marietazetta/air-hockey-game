@@ -1,5 +1,5 @@
 class Puck {
-    constructor(gameScreen, gameSize) { // No estaba pasando gameScreen como parámetro.
+    constructor(gameScreen, gameSize) {
         this.gameScreen = gameScreen;
         this.gameSize = gameSize;
 
@@ -16,7 +16,7 @@ class Puck {
 
         this.setInitialPos()
 
-        this.puckPhysics = { // Cambios
+        this.puckPhysics = {
             speed: {
                 top: 15,
                 left: 15
@@ -34,17 +34,17 @@ class Puck {
         }
     }
 
-    init() { // DOM, estilos y propiedades.
-        this.puckElement = document.createElement('div') // Creamos en el DOM.
+    init() {
+        this.puckElement = document.createElement('div')
 
-        // this.puckElement.src = 'img.png' 
+
 
         this.puckElement.style.backgroundImage = "url('img/puck.png')"
         this.puckElement.style.backgroundSize = "contain"
         this.puckElement.style.backgroundRepeat = "no-repeat"
 
         this.puckElement.style.position = 'absolute'
-        this.puckElement.style.zIndex = '10' // De esta forma el puck está por encima del background.
+        this.puckElement.style.zIndex = '10'
 
         this.puckElement.style.width = `${this.puckSize.w}px`
         this.puckElement.style.height = `${this.puckSize.h}px`
@@ -60,8 +60,6 @@ class Puck {
         this.updatePos()
 
     }
-
-
 
     move() {
 
@@ -127,19 +125,21 @@ class Puck {
 
     checkCollisionWithRightGoalBox(rightGoalBox) {
         if (this.puckPos.left + this.puckSize.w > rightGoalBox.rightGoalBoxPos.left) {
+            Game.goalsound.play()
             this.reset()
             this.hasStarted = false
             let currentScore = Number(Game.score.scoreElement.innerText) + 1
-            currentScore === 5 && alert('Red Player Wins!!!') && Game.init()
+            currentScore === 5 && location.reload()
             Game.score.scoreElement.innerText = currentScore
         }
     }
     checkCollisionWithLeftGoalBox(leftGoalBox) {
         if (this.puckPos.left < leftGoalBox.leftGoalBoxPos.left + leftGoalBox.leftGoalBoxSize.w) {
+            Game.goalsound.play()
             this.reset()
             this.hasStarted = false
             let currentScore2 = Number(Game.score2.score2Element.innerText) + 1
-            currentScore2 === 5 && alert('Blue Player Wins!!!') && Game.init()
+            currentScore2 === 5 && location.reload()
             Game.score2.score2Element.innerText = currentScore2
         }
     }
