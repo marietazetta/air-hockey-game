@@ -18,6 +18,11 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
             left: 89.50
         };
 
+        this.isMovingUp = false
+        this.isMovingDown = false
+        this.isMovingRight = false
+        this.isMovingLeft = false
+
         this.init();
     }
 
@@ -41,30 +46,77 @@ class Mullet { // ES EL JUGADOR 1 Y ES EL COLOR ROJO Y ESTA A LA IZQUIERDA🔴
     }
 
     move() {
+        if (this.isMovingUp) {
+            this.mulletPos.top -= 15
+        }
         this.updatePos()
+
+        if (this.isMovingDown) {
+            this.mulletPos.top += 15
+        }
+        this.updatePos()
+
+        if (this.isMovingLeft) {
+            this.mulletPos.left -= 15
+        }
+        this.updatePos()
+
+        if (this.isMovingRight) {
+            this.mulletPos.left += 15
+        }
+        this.updatePos()
+
+        this.checkCollisionMullet()
+
+    }
+
+    checkwCollisionMullet() {
+        if (this.mulletPos.left >= this.gameSize.w - this.mulletSize.w) {
+            this.mulletTurnLeft()
+        }
+
+        if (this.mulletPos.top >= this.gameSize.h - this.mulletSize.h) {
+            this.mulletTurnTop()
+        }
+
+        if (this.mulletPos.left <= 0) {
+            this.mulletTurnLeft()
+        }
+
+        if (this.mulletPos.top <= 0) {
+            this.mulletTurnTop()
+        }
+    }
+
+    mulletTurnLeft() {
+        this.mulletSpeed.left *= -1
+    }
+    mulletTurnTop() {
+        this.mulletSpeed.top *= -1
     }
 
 
-    moveUp() {
-        this.mulletPos.top = Math.max(0, this.mulletPos.top - this.mulletSpeed.top)
-        this.updatePos()
-    }
 
-    moveDown() {
-        this.mulletPos.top = Math.min(this.gameSize.h - this.mulletSize.h, this.mulletPos.top + this.mulletSpeed.top)
-        this.updatePos()
-    }
+    // moveUp() {
+    //     this.mulletPos.top = Math.max(0, this.mulletPos.top - this.mulletSpeed.top)
+    //     this.updatePos()
+    // }
 
-    moveLeft() {
-        this.mulletPos.left = Math.max(0, this.mulletPos.left - this.mulletSpeed.left)
-        this.updatePos()
-    }
+    // moveDown() {
+    //     this.mulletPos.top = Math.min(this.gameSize.h - this.mulletSize.h, this.mulletPos.top + this.mulletSpeed.top)
+    //     this.updatePos()
+    // }
 
-    moveRight() {
-        this.mulletPos.left = Math.min(this.gameSize.w - this.mulletSize.w, this.mulletPos.left + this.mulletSpeed.left)
-        this.updatePos()
+    // moveLeft() {
+    //     this.mulletPos.left = Math.max(0, this.mulletPos.left - this.mulletSpeed.left)
+    //     this.updatePos()
+    // }
 
-    }
+    // moveRight() {
+    //     this.mulletPos.left = Math.min(this.gameSize.w - this.mulletSize.w, this.mulletPos.left + this.mulletSpeed.left)
+    //     this.updatePos()
+
+    // }
 
     updatePos() {
         this.mulletElement.style.top = `${this.mulletPos.top}px`
@@ -92,6 +144,11 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
             left: 89.50
         };
 
+        this.isMovingUp = false
+        this.isMovingDown = false
+        this.isMovingRight = false
+        this.isMovingLeft = false
+
         this.init();
     }
 
@@ -114,31 +171,49 @@ class Mullet2 { // ES EL JUGADOR 2 Y ES EL COLOR AZUL Y ESTA A LA DERECHA🔵
     }
 
     move() {
+        if (this.isMovingUp) {
+            this.mullet2Pos.top -= 15
+        }
+        this.updatePos()
+
+        if (this.isMovingDown) {
+            this.mullet2Pos.top += 15
+        }
+        this.updatePos()
+
+        if (this.isMovingLeft) {
+            this.mullet2Pos.left -= 15
+        }
+        this.updatePos()
+
+        if (this.isMovingRight) {
+            this.mullet2Pos.left += 15
+        }
         this.updatePos()
     }
 
 
 
-    moveUp() {
-        this.mullet2Pos.top = Math.max(0, this.mullet2Pos.top - this.mullet2Speed.top)
-        this.updatePos()
-    }
+    // moveUp() {
+    //     this.mullet2Pos.top = Math.max(0, this.mullet2Pos.top - this.mullet2Speed.top)
+    //     this.updatePos()
+    // }
 
-    moveDown() {
-        this.mullet2Pos.top = Math.min(this.gameSize.h - this.mullet2Size.h, this.mullet2Pos.top + this.mullet2Speed.top)
-        this.updatePos()
-    }
+    // moveDown() {
+    //     this.mullet2Pos.top = Math.min(this.gameSize.h - this.mullet2Size.h, this.mullet2Pos.top + this.mullet2Speed.top)
+    //     this.updatePos()
+    // }
 
-    moveLeft() {
-        this.mullet2Pos.left = Math.max(0, this.mullet2Pos.left - this.mullet2Speed.left)
-        this.updatePos()
-    }
+    // moveLeft() {
+    //     this.mullet2Pos.left = Math.max(0, this.mullet2Pos.left - this.mullet2Speed.left)
+    //     this.updatePos()
+    // }
 
-    moveRight() {
-        this.mullet2Pos.left = Math.min(this.gameSize.w - this.mullet2Size.w, this.mullet2Pos.left + this.mullet2Speed.left)
-        this.updatePos()
+    // moveRight() {
+    //     this.mullet2Pos.left = Math.min(this.gameSize.w - this.mullet2Size.w, this.mullet2Pos.left + this.mullet2Speed.left)
+    //     this.updatePos()
 
-    }
+    // }
 
     updatePos() {
         this.mullet2Element.style.top = `${this.mullet2Pos.top}px`

@@ -58,7 +58,7 @@ class Puck {
     reset() {
         this.setInitialPos()
         this.updatePos()
-        this.gameOver()
+
     }
 
 
